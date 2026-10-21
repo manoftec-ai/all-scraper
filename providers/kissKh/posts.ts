@@ -56,7 +56,7 @@ export const getSearchPosts = async function ({
 }): Promise<Post[]> {
   const { axios } = providerContext;
   const baseUrl = await getBaseUrl("kissKh");
-  const url = `${baseUrl}/api/DramaList/Search?q=${searchQuery}&type=0`;
+  const url = `${baseUrl}/api/DramaList/Search?q=${encodeURIComponent(searchQuery)}&type=0`;
   try {
     const res = await axios.get(url, { signal });
     const data = res.data;

@@ -62,7 +62,7 @@ export const getSearchPosts = async ({
   const baseUrl = await getBaseUrl("lux");
 
   console.log("vegaGetPosts baseUrl:", providerValue, baseUrl);
-  const url = `${baseUrl}/search.php?q=${searchQuery}&page=${page}`;
+  const url = `${baseUrl}/search.php?q=${encodeURIComponent(searchQuery)}&page=${page}`;
   console.log("vegaGetPosts url:", url);
 
   try {

@@ -64,7 +64,11 @@ export const getSearchPosts = async ({
   const baseUrl = await getBaseUrl("Vega");
 
   console.log("vegaGetPosts baseUrl:", providerValue, baseUrl);
-  const url = `${baseUrl}/search.php?q=${searchQuery}&page=${page}`;
+  // Encode the query so terms containing &, =, spaces or non-ASCII characters
+  // do not break out of the q= parameter.
+  const url = `${baseUrl}/search.php?q=${encodeURIComponent(
+    searchQuery,
+  )}&page=${page}`;
   console.log("vegaGetPosts url:", url);
 
   try {

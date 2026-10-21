@@ -103,7 +103,7 @@ export const getSearchPosts = async function ({
     const { axios } = providerContext;
     const catalog: Post[] = [];
     const baseUrl = await getBaseUrl("dooflix");
-    const url = `${baseUrl}/rest-api//v130/search?q=${searchQuery}&type=movietvserieslive&range_to=0&range_from=0&tv_category_id=0&genre_id=0&country_id=0`;
+    const url = `${baseUrl}/rest-api//v130/search?q=${encodeURIComponent(searchQuery)}&type=movietvserieslive&range_to=0&range_from=0&tv_category_id=0&genre_id=0&country_id=0`;
 
     const res = await axios.get(url, { headers, signal });
     const resData = res.data;
